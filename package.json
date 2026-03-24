@@ -1,0 +1,48 @@
+{
+  "name": "flagifyts",
+  "version": "0.1.0",
+  "description": "TypeScript SDK for the self-hosted Flagify API.",
+  "type": "module",
+  "private": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE*"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "bun build ./src/index.ts --outdir ./dist --format esm --target browser && bunx tsc -p tsconfig.build.json",
+    "test": "bun test",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "check": "bun run lint && bun run test && bun run build",
+    "prepack": "bun run check"
+  },
+  "keywords": [
+    "flagify",
+    "feature-flags",
+    "bun",
+    "typescript",
+    "sdk"
+  ],
+  "engines": {
+    "bun": ">=1.3.0"
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.8",
+    "@types/bun": "^1.3.11",
+    "typescript": "^5.9.3"
+  }
+}
